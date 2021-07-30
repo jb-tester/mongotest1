@@ -8,19 +8,19 @@ package com.mytests.spring.springData.mongo.test1.data;
  */
 public class Summary {
     String name;
-    int adult;
+    int years;
 
     @Override
     public String toString() {
         return "Summary: " +
                 "name='" + name + '\'' +
-                ", adult=" + adult +
+                ", years=" + years +
                 ' ';
     }
 
-    public Summary(String name, int adult) {
+    public Summary(String name, int years) {
         this.name = name;
-        this.adult = adult;
+        this.years = years;
     }
 
     public String getName() {
@@ -31,11 +31,11 @@ public class Summary {
         this.name = name;
     }
 
-    public int getAdult() {
-        return adult;
+    public int getYears() {
+        return years;
     }
 
-    public void setAdult(int adult) {
-        this.adult = adult;
+    public void setYears(int years) {
+        this.years = years;
     }
 }

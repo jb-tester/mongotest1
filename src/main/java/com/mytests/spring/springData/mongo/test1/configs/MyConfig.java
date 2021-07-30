@@ -1,11 +1,14 @@
 package com.mytests.spring.springData.mongo.test1.configs;
 
-import com.mongodb.Mongo;
-import com.mongodb.MongoClient;
+
+
+import com.mongodb.ConnectionString;
+import com.mongodb.MongoClientSettings;
+import com.mongodb.client.MongoClient;
+import com.mongodb.client.MongoClients;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
@@ -17,15 +20,20 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
  */
 @Configuration
 @ComponentScan(basePackages = "com.mytests.spring.springData.mongo.test1.services")
-@EnableMongoRepositories(basePackages = "com.mytests.spring.springData.mongo.test1.repositories", mongoTemplateRef = "mongo_template", repositoryImplementationPostfix = "Impl", considerNestedRepositories = false)
+@EnableMongoRepositories(basePackages = "com.mytests.spring.springData.mongo.test1.repositories", mongoTemplateRef = "myMongoTemplate", repositoryImplementationPostfix = "Impl", considerNestedRepositories = false)
 public class MyConfig {
+    @Bean
+    public MongoClient mongo() {
+        ConnectionString connectionString = new ConnectionString("mongodb://localhost:27017/mydb1");
+        MongoClientSettings mongoClientSettings = MongoClientSettings.builder()
+                .applyConnectionString(connectionString)
+                .build();
 
-    public @Bean
-    Mongo mongo() throws Exception {
-        return new MongoClient("localhost");
+        return MongoClients.create(mongoClientSettings);
     }
 
-    public @Bean MongoTemplate mongo_template() throws Exception {
+    @Bean
+    public MongoTemplate myMongoTemplate() throws Exception {
         return new MongoTemplate(mongo(), "mydb1");
     }
 

@@ -45,7 +45,7 @@ public class UserRepositoryImpl implements UserRepositoryCustom {
                 match(where("id").is(user.getId())),
                 project("firstname","age")
                         .andExpression("firstname").as("name")
-                        .andExpression("age" ).as("adult")
+                        .andExpression("age" ).as("years")
 
 
         );

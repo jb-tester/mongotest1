@@ -23,9 +23,9 @@ public class RunMe {
         userService.findOldUsers(30);
         System.out.println("------------------------------");
         userService.findUsersByName("irina");
-        System.out.println("------------------------------");
+        System.out.println("!!!!!!!!------------------------------");
         userService.aggregations();
-        System.out.println("------------------------------");
+        System.out.println("!!!!!!!!------------------------------");
         userService.extra();
         System.out.println("------------------------------");
         userService.foo();
