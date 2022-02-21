@@ -30,21 +30,21 @@ public class UserService {
 
 
     public void findAllUsers(){
-        setUp();
+        //setUp();
         Iterable<User> users = repository.findAll();
         users.forEach(user -> {
             System.out.println(user.toString());
         });
     }
     public void findUsersByNames(String firstname, String lastname){
-        setUp();
+        //setUp();
         List<User> users = repository.findByFirstnameAndLastname(firstname,lastname);
         for (User next : users) {
             System.out.println(next.toString());
         }
     }
     public void findOldUsers(int age){
-        setUp();
+        //setUp();
         List<User> users = repository.findByAgeAfter(age);
         for (User next : users) {
             System.out.println(next.toString());
@@ -75,7 +75,8 @@ public class UserService {
     public void aggregations(){
         setUp();
         User user = new User("masha","blinova", 10);
-
+        Address a = new Address("Russia","Moscow","Taganskaya pl",5);
+        user.setAddress(a);
         repository.save(user);
         Summary summary = repository.getSummaryFor(user);
 

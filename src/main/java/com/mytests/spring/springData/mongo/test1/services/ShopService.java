@@ -42,8 +42,9 @@ public class ShopService {
         repository.deleteAll();
         Store store1 = new Store(new Point(200,200),1000);
         Store store2 = new Store(new Point(1,1),2000);
+        Store store3 = new Store(new Point(300,300),3000);
         Shop shop1 = new Shop("Perekrestok","food", new Point(15,15),store1);
-        Shop shop2 = new Shop("Pjaterochka","food", new Point(16,16), store1);
+        Shop shop2 = new Shop("Pjaterochka","food", new Point(16,16), store3);
         Shop shop3 = new Shop("Aldo","shoes", new Point(130,130), store2);
         repository.save(shop1);
         repository.save(shop2);
@@ -58,14 +59,25 @@ public class ShopService {
 
     public void findAllCellingFood(){
         setUp();
+        System.out.println("------ all food stores: ------");
         Stream<Shop> foodStores = shopsRepository.streamShopsBySellsContaining("food");
         for (Iterator<Shop> iterator = foodStores.iterator(); iterator.hasNext(); ) {
             Shop next = iterator.next();
             System.out.println(next.toString());
         }
     }
+
+    public void findLargeStores(){
+        setUp();
+        System.out.println("------large shops:-----");
+        List<Shop> result = repository.findByStoreSizeGreaterThan(1000);
+        for (Shop shop : result) {
+            System.out.println(shop);
+        }
+    }
     public void checkNearPoint(){
         setUp();
+        System.out.println("----- check shops near points ----");
         Point p = new Point(0,0);
         Distance oneKilometer = new Distance(20, Metrics.KILOMETERS);
         Circle circle = new Circle(14,14,3);

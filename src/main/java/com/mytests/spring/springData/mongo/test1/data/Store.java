@@ -1,6 +1,8 @@
 package com.mytests.spring.springData.mongo.test1.data;
 
 import org.springframework.data.geo.Point;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 /**
  * *******************************
@@ -8,13 +10,16 @@ import org.springframework.data.geo.Point;
  * Project: mongotest1
  * *******************************
  */
+@Document("shops.store")
 public class Store {
+    @Field(name = "location")
     Point location;
-    int capacity;
+    @Field(name = "capacity")
+    int size;
 
-    public Store(Point location, int capacity) {
+    public Store(Point location, int size) {
         this.location = location;
-        this.capacity = capacity;
+        this.size = size;
     }
 
     public Point getLocation() {
@@ -25,11 +30,11 @@ public class Store {
         this.location = location;
     }
 
-    public int getCapacity() {
-        return capacity;
+    public int getSize() {
+        return size;
     }
 
-    public void setCapacity(int capacity) {
-        this.capacity = capacity;
+    public void setSize(int size) {
+        this.size = size;
     }
 }

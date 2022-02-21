@@ -2,6 +2,7 @@ package com.mytests.spring.springData.mongo.test1.data;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.math.BigInteger;
 
@@ -20,7 +21,7 @@ public class User {
     public void setAddress(Address address) {
         this.address = address;
     }
-
+    @Field(name = "address")
     private Address address;
 
     public User(String firstname, String lastname, int age) {
@@ -32,9 +33,11 @@ public class User {
 
     @Id
     BigInteger id;
+    @Field
     String firstname;
+    @Field("lastname")
     String lastname;
-    int age;
+    @Field("age") int age;
 
     public BigInteger getId() {
         return id;

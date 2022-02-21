@@ -2,6 +2,7 @@ package com.mytests.spring.springData.mongo.test1.data;
 
 import org.springframework.data.geo.Point;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 /**
  * *******************************
@@ -11,10 +12,13 @@ import org.springframework.data.mongodb.core.mapping.Document;
  */
 @Document(collection = "shops")
 public class Shop {
-
+    @Field
     Store store;
+    @Field
     String name;
+    @Field("sells")
     String sells;
+    @Field
     Point location;
 
     public Shop(String name, String sells, Point location, Store store) {

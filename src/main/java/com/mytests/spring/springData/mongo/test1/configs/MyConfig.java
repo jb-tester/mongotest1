@@ -20,7 +20,7 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
  */
 @Configuration
 @ComponentScan(basePackages = "com.mytests.spring.springData.mongo.test1.services")
-@EnableMongoRepositories(basePackages = "com.mytests.spring.springData.mongo.test1.repositories", mongoTemplateRef = "myMongoTemplate", repositoryImplementationPostfix = "Impl", considerNestedRepositories = false)
+@EnableMongoRepositories(basePackages = "com.mytests.spring.springData.mongo.test1.repositories", mongoTemplateRef = "myMongoTemplate", repositoryImplementationPostfix = "Impl", considerNestedRepositories = true)
 public class MyConfig {
     @Bean
     public MongoClient mongo() {

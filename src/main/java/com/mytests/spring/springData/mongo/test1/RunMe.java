@@ -39,6 +39,10 @@ public class RunMe {
         shopService.checkNearPoint();
         System.out.println("------------------------------");
         shopService.findAllCellingFood();
+        System.out.println("------------------------------");
+        shopService.findLargeStores();
+        System.out.println("------------------------------");
+        shopService.findAllCellingFood();
     }
 
 }
