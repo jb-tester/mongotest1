@@ -14,16 +14,16 @@ import java.math.BigInteger;
  */
 @Document(collection = "users")
 public class User {
-    public Address getAddress() {
-        return address;
-    }
-
-    public void setAddress(Address address) {
-        this.address = address;
-    }
+    @Id
+    BigInteger id;
+    @Field
+    String firstname;
+    @Field("lastname")
+    String lastname;
+    @Field("age")
+    int age;
     @Field(name = "address")
     private Address address;
-
     public User(String firstname, String lastname, int age) {
 
         this.firstname = firstname;
@@ -31,13 +31,13 @@ public class User {
         this.age = age;
     }
 
-    @Id
-    BigInteger id;
-    @Field
-    String firstname;
-    @Field("lastname")
-    String lastname;
-    @Field("age") int age;
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
 
     public BigInteger getId() {
         return id;

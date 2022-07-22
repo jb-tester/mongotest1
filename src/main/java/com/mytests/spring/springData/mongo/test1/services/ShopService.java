@@ -75,6 +75,14 @@ public class ShopService {
             System.out.println(shop);
         }
     }
+    public void findSmallStores(){
+        setUp();
+        System.out.println("------small shops:-----");
+        List<Shop> result = repository.findByStoreSizeLessThan(2000);
+        for (Shop shop : result) {
+            System.out.println(shop);
+        }
+    }
     public void checkNearPoint(){
         setUp();
         System.out.println("----- check shops near points ----");

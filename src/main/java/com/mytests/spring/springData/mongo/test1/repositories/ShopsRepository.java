@@ -32,6 +32,9 @@ public interface ShopsRepository extends CrudRepository<Shop, BigInteger>, OutOf
     @Query("{'store.size': {$gt: ?0}}")
     List<Shop> findByStoreSizeGreaterThan(int store_capacity);
 
+    @Query("{'store.capacity': {$lt: ?0}}")
+    List<Shop> findByStoreSizeLessThan(int store_capacity);
+
     List<Shop> findByLocationExists(boolean exists);
 
 

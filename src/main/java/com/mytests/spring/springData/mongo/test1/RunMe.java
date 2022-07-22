@@ -42,6 +42,8 @@ public class RunMe {
         System.out.println("------------------------------");
         shopService.findLargeStores();
         System.out.println("------------------------------");
+        shopService.findSmallStores();
+        System.out.println("------------------------------");
         shopService.findAllCellingFood();
     }
 
